@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Millene Santos e Silva — Sistemas de Informação</title>
+<meta name="description" content="Estudante de Sistemas de Informação na UFU e estagiária de TI. Desenvolvimento mobile em Kotlin, backend em Python e infraestrutura de rede.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..800;1,9..144,400..700&family=Karla:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#2E1B4A;
+    --paper:#FBF7F9;
+    --rose:#E85E8C;
+    --lilac:#6E4E96;
+    --butter:#F5C57F;
+    --mute:#7A6A85;
+    --line:#E4D9E6;
+    --card:#FFFFFF;
+
+    --display:"Fraunces",Georgia,serif;
+    --body:"Karla","Helvetica Neue",Arial,sans-serif;
+    --mono:"JetBrains Mono",ui-monospace,"Courier New",monospace;
+  }
+
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--body);
+    font-size:17px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .wrap{max-width:1040px;margin:0 auto;padding:0 28px}
+
+  a{color:inherit}
+  a:focus-visible,button:focus-visible{
+    outline:2.5px solid var(--rose);
+    outline-offset:3px;
+    border-radius:2px;
+  }
+
+  /* ---------- eyebrow label (mono = the developer voice) ---------- */
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:11.5px;
+    font-weight:500;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--lilac);
+    margin:0 0 18px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+  }
+  .eyebrow::after{
+    content:"";
+    flex:1;
+    height:1px;
+    background:var(--line);
+  }
+
+  /* ---------- hero ---------- */
+  header.hero{padding:96px 0 76px;position:relative;overflow:hidden}
+  .hero-blob{
+    position:absolute;
+    top:-190px;right:-160px;
+    width:460px;height:460px;
+    border-radius:50%;
+    background:radial-gradient(circle at 35% 35%, #FBD7E4 0%, #F6E3EE 55%, rgba(251,247,249,0) 72%);
+    pointer-events:none;
+  }
+  .hero-inner{position:relative}
+
+  .hero-kicker{
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--rose);
+    margin:0 0 22px;
+  }
+  h1{
+    font-family:var(--display);
+    font-optical-sizing:auto;
+    font-weight:700;
+    font-size:clamp(2.7rem,7vw,4.6rem);
+    line-height:1.02;
+    letter-spacing:-.02em;
+    margin:0 0 26px;
+    max-width:19ch;
+  }
+  h1 em{
+    font-style:italic;
+    font-weight:600;
+    color:var(--rose);
+  }
+  .thesis{
+    font-size:clamp(1.05rem,2vw,1.28rem);
+    line-height:1.55;
+    max-width:56ch;
+    color:#4A3663;
+    margin:0 0 34px;
+  }
+
+  .links{display:flex;flex-wrap:wrap;gap:10px;margin:0;padding:0;list-style:none}
+  .links a{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-family:var(--mono);
+    font-size:12.5px;
+    letter-spacing:.04em;
+    text-decoration:none;
+    padding:9px 15px;
+    border:1.5px solid var(--ink);
+    border-radius:100px;
+    background:transparent;
+    transition:background .18s ease,color .18s ease,transform .18s ease;
+  }
+  .links a:hover{background:var(--ink);color:var(--paper);transform:translateY(-2px)}
+
+  /* ---------- sections ---------- */
+  section{padding:72px 0;border-top:1px solid var(--line)}
+  h2{
+    font-family:var(--display);
+    font-weight:600;
+    font-size:clamp(1.7rem,3.4vw,2.35rem);
+    letter-spacing:-.015em;
+    line-height:1.15;
+    margin:0 0 14px;
+  }
+  .lede{max-width:62ch;color:#4A3663;margin:0 0 34px}
+
+  /* ---------- featured project ---------- */
+  .feature{
+    display:grid;
+    grid-template-columns:1.15fr .85fr;
+    gap:44px;
+    align-items:start;
+  }
+  .feature h3{
+    font-family:var(--display);
+    font-size:1.5rem;
+    font-weight:600;
+    margin:0 0 6px;
+  }
+  .feature .role{
+    font-family:var(--mono);
+    font-size:11.5px;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--mute);
+    margin:0 0 20px;
+  }
+  .feature p{margin:0 0 16px}
+
+  .chips{display:flex;flex-wrap:wrap;gap:7px;margin:24px 0 0;padding:0;list-style:none}
+  .chips li{
+    font-family:var(--mono);
+    font-size:11.5px;
+    padding:5px 11px;
+    border-radius:5px;
+    background:#F3EAF6;
+    color:var(--lilac);
+    border:1px solid #E7DAEC;
+  }
+
+  /* SIGNATURE ELEMENT: spec sheet */
+  .spec{
+    background:var(--ink);
+    color:#F3E9F4;
+    border-radius:14px;
+    padding:26px 26px 22px;
+    font-family:var(--mono);
+    position:sticky;
+    top:28px;
+  }
+  .spec-title{
+    font-size:10.5px;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    color:var(--butter);
+    margin:0 0 20px;
+    padding-bottom:14px;
+    border-bottom:1px solid rgba(245,197,127,.28);
+  }
+  .spec-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:14px;
+    padding:11px 0;
+    border-bottom:1px dotted rgba(243,233,244,.16);
+    font-size:12.5px;
+  }
+  .spec-row:last-of-type{border-bottom:0}
+  .spec-row dt{color:#BBA6C6}
+  .spec-row dd{
+    margin:0;
+    font-weight:700;
+    font-size:15px;
+    color:#fff;
+    white-space:nowrap;
+  }
+  .spec-note{
+    font-size:11px;
+    line-height:1.5;
+    color:#A692B2;
+    margin:18px 0 0;
+    padding-top:16px;
+    border-top:1px solid rgba(243,233,244,.14);
+  }
+
+  /* ---------- timeline ---------- */
+  .timeline{
+    list-style:none;
+    margin:0;
+    padding:0 0 0 30px;
+    position:relative;
+  }
+  .timeline::before{
+    content:"";
+    position:absolute;
+    left:5px;top:8px;bottom:8px;
+    width:2px;
+    background:linear-gradient(to bottom,var(--butter),var(--rose) 45%,var(--lilac));
+  }
+  .timeline li{position:relative;padding:0 0 34px}
+  .timeline li:last-child{padding-bottom:0}
+  .timeline li::before{
+    content:"";
+    position:absolute;
+    left:-30px;top:9px;
+    width:12px;height:12px;
+    border-radius:50%;
+    background:var(--paper);
+    border:2.5px solid var(--rose);
+  }
+  .tl-when{
+    font-family:var(--mono);
+    font-size:11.5px;
+    letter-spacing:.09em;
+    color:var(--mute);
+    display:block;
+    margin-bottom:4px;
+  }
+  .tl-what{
+    font-weight:700;
+    font-size:1.06rem;
+    display:block;
+    margin-bottom:2px;
+  }
+  .tl-where{color:var(--lilac);font-size:.94rem;display:block;margin-bottom:8px}
+  .timeline p{margin:0;max-width:60ch;font-size:.97rem;color:#4A3663}
+
+  /* ---------- two-up cards ---------- */
+  .duo{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  .card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:26px;
+  }
+  .card h3{
+    font-family:var(--display);
+    font-size:1.22rem;
+    font-weight:600;
+    margin:0 0 4px;
+  }
+  .card .role{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--rose);
+    margin:0 0 14px;
+  }
+  .card p{margin:0;font-size:.97rem;color:#4A3663}
+
+  /* ---------- skills ---------- */
+  .skills{display:grid;grid-template-columns:repeat(2,1fr);gap:26px 44px}
+  .skill-group h3{
+    font-family:var(--mono);
+    font-size:11.5px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--lilac);
+    margin:0 0 10px;
+    padding-bottom:9px;
+    border-bottom:1px solid var(--line);
+  }
+  .skill-group p{margin:0;font-size:.98rem}
+
+  /* ---------- contact ---------- */
+  .contact{text-align:center;padding:82px 0 92px}
+  .contact h2{margin-bottom:12px}
+  .contact .lede{margin:0 auto 30px}
+  .contact .links{justify-content:center}
+
+  footer{
+    border-top:1px solid var(--line);
+    padding:26px 0 34px;
+    font-family:var(--mono);
+    font-size:11.5px;
+    color:var(--mute);
+    text-align:center;
+  }
+
+  @media (max-width:860px){
+    .feature{grid-template-columns:1fr;gap:32px}
+    .spec{position:static}
+    .duo,.skills{grid-template-columns:1fr}
+    header.hero{padding:64px 0 56px}
+    section{padding:56px 0}
+    body{font-size:16px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    *{transition:none!important}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-blob" aria-hidden="true"></div>
+  <div class="wrap hero-inner">
+    <p class="hero-kicker">Sistemas de Informação · UFU · Uberlândia</p>
+    <h1>Millene Santos<br>e <em>Silva</em></h1>
+    <p class="thesis">
+      Estudante de Sistemas de Informação e estagiária de TI. Trabalho com
+      desenvolvimento mobile em Kotlin, backend em Python e infraestrutura de rede —
+      e gosto de entender como as coisas funcionam por dentro antes de mexer nelas.
+    </p>
+    <ul class="links">
+      <li><a href="mailto:mille.devv@gmail.com">mille.devv@gmail.com</a></li>
+      <li><a href="https://github.com/Millenes2">GitHub</a></li>
+      <li><a href="LINK_DO_LINKEDIN">LinkedIn</a></li>
+      <li><a href="Curriculo_Millene_Santos.pdf">Currículo (PDF)</a></li>
+    </ul>
+  </div>
+</header>
+
+<section id="luna">
+  <div class="wrap">
+    <p class="eyebrow">Projeto principal</p>
+    <div class="feature">
+      <div>
+        <h3>LUNA — acompanhamento de saúde feminina</h3>
+        <p class="role">Iniciação científica · UFU · 2025 – atual</p>
+
+        <p>
+          Aplicativo de acompanhamento de ciclo menstrual, desenvolvido como projeto de
+          iniciação científica. Comecei pela pergunta que me incomodava: os apps que existem
+          hoje coletam dados de saúde muito sensíveis, e quase nenhum deixa claro para onde
+          esses dados vão.
+        </p>
+        <p>
+          Por isso o projeto foi construído em torno de <strong>soberania de dados</strong>: o
+          consentimento não é uma caixinha na tela de cadastro, é uma entidade de primeira classe
+          no banco, com registro de quando foi dado e quando foi revogado. A arquitetura segue
+          os princípios da LGPD para dado sensível de saúde.
+        </p>
+        <p>
+          É um app Android em Kotlin com Jetpack Compose, conversando com uma API própria em
+          FastAPI. Autenticação com JWT e senhas em bcrypt, migrações versionadas com Alembic.
+        </p>
+
+        <ul class="chips">
+          <li>Kotlin</li><li>Jetpack Compose</li><li>Python</li><li>FastAPI</li>
+          <li>SQLAlchemy</li><li>Alembic</li><li>pytest</li><li>JWT</li>
+        </ul>
+      </div>
+
+      <dl class="spec">
+        <div class="spec-title">Backend em números</div>
+        <div class="spec-row"><dt>Testes automatizados</dt><dd>146</dd></div>
+        <div class="spec-row"><dt>Cobertura</dt><dd>~94%</dd></div>
+        <div class="spec-row"><dt>Endpoints da API</dt><dd>21</dd></div>
+        <div class="spec-row"><dt>Routers</dt><dd>6</dd></div>
+        <div class="spec-row"><dt>Migrações</dt><dd>5</dd></div>
+        <div class="spec-note">
+          Escrevi os testes junto com a API, não depois. Foi assim que apareceram três defeitos
+          no app que eu não teria encontrado só usando a tela — e eles viraram resultado do
+          artigo.
+        </div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section id="pesquisa">
+  <div class="wrap">
+    <p class="eyebrow">Pesquisa</p>
+    <h2>Quando o teste contradiz a tela</h2>
+    <p class="lede">
+      Escrevi um short paper sobre a LUNA, submetido ao <strong>Latin.Science 2026</strong>
+      (Latinoware, Foz do Iguaçu). O argumento não é que o app funciona — é o contrário.
+      Ao validar o sistema em quatro níveis, encontrei funcionalidades que pareciam prontas na
+      interface e não estavam: um cálculo de fase do ciclo que retornava vazio e uma tela de
+      consentimento que não chegava a registrar nada no servidor.
+    </p>
+    <p class="lede">
+      Achei mais honesto publicar isso do que esconder. Um app de saúde que exibe uma tela de
+      consentimento sem gravar o consentimento é, na prática, pior do que um que não exibe
+      nada — e esse tipo de falha silenciosa só aparece quando alguém testa a camada de baixo.
+    </p>
+  </div>
+</section>
+
+<section id="percurso">
+  <div class="wrap">
+    <p class="eyebrow">Percurso</p>
+    <h2>Do varejo para a infraestrutura</h2>
+    <p class="lede">
+      Cada passo aqui aconteceu porque o anterior me deixou com uma pergunta que eu não
+      sabia responder.
+    </p>
+
+    <ol class="timeline">
+      <li>
+        <span class="tl-when">2026 — ATUAL</span>
+        <span class="tl-what">Estagiária de Tecnologia (TI)</span>
+        <span class="tl-where">Zarro Advogados</span>
+        <p>
+          Automação de rotinas internas, suporte técnico e infraestrutura de rede. Configuro e
+          acompanho o ambiente TP-Link Omada com o roteador ER605, analiso tráfego e dispositivos
+          conectados, e documento a infraestrutura do escritório.
+        </p>
+      </li>
+      <li>
+        <span class="tl-when">2025</span>
+        <span class="tl-what">Monitora de Lógica de Programação</span>
+        <span class="tl-where">Universidade Federal de Uberlândia</span>
+        <p>
+          Atendi estudantes travados em algoritmos e lógica. Explicar a mesma ideia de cinco
+          formas diferentes até uma encaixar me ensinou mais sobre programação do que resolver
+          sozinha.
+        </p>
+      </li>
+      <li>
+        <span class="tl-when">2024 — 2025</span>
+        <span class="tl-what">Jovem Aprendiz — Logística</span>
+        <span class="tl-where">White Martins</span>
+        <p>
+          Primeira experiência corporativa. Usei SAP no dia a dia para registro e conferência de
+          dados de logística, e vi de perto como uma empresa grande depende de processo bem
+          definido para não parar.
+        </p>
+      </li>
+      <li>
+        <span class="tl-when">2024</span>
+        <span class="tl-what">Da Gestão da Informação para Sistemas de Informação</span>
+        <span class="tl-where">Universidade Federal de Uberlândia</span>
+        <p>
+          Entrei em Gestão da Informação querendo entender dados. Saí de lá querendo construir os
+          sistemas que produzem os dados — e mudei de curso por isso.
+        </p>
+      </li>
+      <li>
+        <span class="tl-when">2021 — 2023</span>
+        <span class="tl-what">Loja de acessórios artesanais</span>
+        <span class="tl-where">Negócio próprio</span>
+        <p>
+          Criei e operei uma loja de venda online do zero, na pandemia: produção, divulgação,
+          venda e atendimento. Foi a primeira vez que eu fui a única responsável por algo
+          funcionar.
+        </p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section id="comunidade">
+  <div class="wrap">
+    <p class="eyebrow">Ensino e comunidade</p>
+    <h2>Explicar é parte do trabalho</h2>
+    <p class="lede">
+      Duas coisas que eu faço porque quero, e que acabaram melhorando bastante minha
+      comunicação técnica.
+    </p>
+    <div class="duo">
+      <article class="card">
+        <h3>Mais Meninas Tech</h3>
+        <p class="role">Projeto de extensão · UFU</p>
+        <p>
+          Dou aula para meninas do ensino médio em escolas públicas, mostrando que tecnologia é
+          um caminho possível. Boa parte delas nunca tinha visto alguém parecida com elas
+          programando.
+        </p>
+      </article>
+      <article class="card">
+        <h3>Conteúdo de programação</h3>
+        <p class="role">TikTok e Instagram</p>
+        <p>
+          Produzo conteúdo curto sobre programação para quem está começando. Explicar em um
+          minuto obriga a entender de verdade — não dá para se esconder atrás de jargão.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="ferramentas">
+  <div class="wrap">
+    <p class="eyebrow">Ferramentas</p>
+    <h2>Com o que eu trabalho</h2>
+    <div class="skills">
+      <div class="skill-group">
+        <h3>Desenvolvimento</h3>
+        <p>Kotlin, Jetpack Compose, Python, FastAPI, Java, SQL</p>
+      </div>
+      <div class="skill-group">
+        <h3>Dados e BI</h3>
+        <p>Power BI, Power Platform, Excel, modelagem de dados</p>
+      </div>
+      <div class="skill-group">
+        <h3>Sistemas corporativos</h3>
+        <p>SAP (rotinas de logística)</p>
+      </div>
+      <div class="skill-group">
+        <h3>Infraestrutura e redes</h3>
+        <p>TP-Link Omada / ER605, redes TCP/IP e Wi-Fi, análise de tráfego, Linux</p>
+      </div>
+      <div class="skill-group">
+        <h3>Prática de engenharia</h3>
+        <p>Git, GitHub, pytest, migrações de banco, documentação técnica</p>
+      </div>
+      <div class="skill-group">
+        <h3>Idiomas</h3>
+        <p>Português (nativo), Inglês (intermediário)</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact">
+  <div class="wrap">
+    <h2>Vamos conversar</h2>
+    <p class="lede">
+      Estou procurando estágio em desenvolvimento, dados ou sistemas de gestão. Se quiser ver
+      código, o GitHub está aberto.
+    </p>
+    <ul class="links">
+      <li><a href="mailto:mille.devv@gmail.com">mille.devv@gmail.com</a></li>
+      <li><a href="https://github.com/Millenes2">github.com/Millenes2</a></li>
+      <li><a href="LINK_DO_LINKEDIN">LinkedIn</a></li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">Millene Santos e Silva · Uberlândia, MG</div>
+</footer>
+
+</body>
+</html>
